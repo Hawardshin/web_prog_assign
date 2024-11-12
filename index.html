@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쩝쩝박사 - 메인 페이지</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><i class="fas fa-utensils"></i> 쩝쩝박사</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#restaurants">맛집 소개</a></li>
+                    <li><a href="#recipes">요리 레시피</a></li>
+                    <li><a href="#games">음식 게임</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>맛있는 음식과 함께하는 즐거운 시간!</h2>
+                <p>맛집 탐방, 요리 레시피, 그리고 간단한 음식 게임까지 쩝쩝박사에서 즐겨보세요!</p>
+                <button onclick="scrollToSection('restaurants')" class="cta-button">더 알아보기</button>
+            </div>
+        </section>
+
+        <section id="restaurants" class="section">
+            <div class="container">
+                <h2>맛집 소개</h2>
+                <p>다양한 음식점들을 탐방하고 여러분만의 맛집 리스트를 만들어 보세요!</p>
+                <div class="card-container">
+                    <a href="restaurant1.html">
+                    <div class="card">
+                        <img src="image/stake.webp" alt="Restaurant 1">
+                        <h3>맛집 1</h3>
+                        <p>최고의 맛을 자랑하는 음식점입니다.</p>
+                    </div>
+                    </a>
+                    <div class="card">
+                        <img src="image/salad.webp" alt="Restaurant 2">
+                        <h3>맛집 2</h3>
+                        <p>신선한 재료로 요리하는 맛집입니다.</p>
+                    </div>
+                    <div class="card">
+                        <img src="image/stake_pasta.webp" alt="Restaurant 3">
+                        <h3>맛집 3</h3>
+                        <p>가족과 함께하기 좋은 분위기의 음식점입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recipes" class="section">
+            <div class="container">
+                <h2>요리 레시피</h2>
+                <p>쉽고 간편한 요리법을 찾아보고 집에서 직접 만들어 보세요.</p>
+                <div class="card-container">
+                    <div class="card">
+                        <img src="image/sandwitch.webp" alt="Recipe 1">
+                        <h3>레시피 1</h3>
+                        <p>간단하고 맛있는 요리법입니다.</p>
+                    </div>
+                    <div class="card">
+                        <img src="image/salad_2.webp" alt="Recipe 2">
+                        <h3>레시피 2</h3>
+                        <p>누구나 따라 할 수 있는 쉬운 요리법입니다.</p>
+                    </div>
+                    <div class="card">
+                        <img src="image/bread.webp" alt="Recipe 3">
+                        <h3>레시피 3</h3>
+                        <p>집에서 손쉽게 만들 수 있는 특별한 요리입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="section">
+            <div class="container">
+                <h2>음식 게임</h2>
+                <p>음식과 관련된 간단한 게임을 통해 재미있는 시간을 보내보세요!</p>
+                <div class="game-container">
+                    <a href="quiz.html">
+                    <div class="game-card">
+                        <i class="fas fa-pizza-slice"></i>
+                        <h3>게임 1</h3>
+                        <p>음식을 맞추는 재미있는 퀴즈 게임입니다.</p>
+                    </div>
+                    </a>
+                    <a href="recipe_game.html">
+                    <div class="game-card">
+                        <i class="fas fa-hamburger"></i>
+                        <h3>게임 2</h3>
+                        <p>재료를 맞춰 요리를 완성하는 게임입니다.</p>
+                    </div>
+                    </a>
+                    <div class="game-card">
+                        <i class="fas fa-ice-cream"></i>
+                        <h3>게임 3</h3>
+                        <p>빠르게 주문을 처리해보세요!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
