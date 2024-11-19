@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쩝쩝박사 - 음식 퀴즈 게임</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><i class="fas fa-utensils"></i> 쩝쩝박사 - 음식 퀴즈 게임</h1>
+        </div>
+    </header>
+
+    <!-- Quiz Game Section -->
+    <main>
+        <div class="container">
+            <div class="quiz-container">
+                <h2>음식 퀴즈에 도전해보세요!</h2>
+                <div class="question" id="question">여기에 질문이 표시됩니다.</div>
+                <div class="options" id="options">
+                    <button class="option" onclick="checkAnswer(0)">옵션 1</button>
+                    <button class="option" onclick="checkAnswer(1)">옵션 2</button>
+                    <button class="option" onclick="checkAnswer(2)">옵션 3</button>
+                    <button class="option" onclick="checkAnswer(3)">옵션 4</button>
+                </div>
+                <div class="result" id="result"></div>
+                <button class="play-again" id="play-again" onclick="startQuiz()" style="display:none;">다시 도전하기</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="./scripts/quiz.js"></script>
+</body>
+
+</html>
