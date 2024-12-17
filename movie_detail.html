@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화박사 - 영화 상세 정보</title>
+    <link rel="stylesheet" href="./styles/movie.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <h1>🎬 영화 상세 정보</h1>
+        <nav>
+            <a href="movie.html">영화박사로 이동</a> |
+            <a href="index.html">쩝쩝박사로 이동</a>
+        </nav>
+    </header>
+
+    <!-- Movie Detail -->
+    <main>
+        <div id="movie-detail" class="movie-detail"></div>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const movieId = params.get('id');
+        const DETAIL_API_URL = `https://yts.mx/api/v2/movie_details.json?movie_id=${movieId}`;
+
+        async function fetchMovieDetail() {
+            const response = await fetch(DETAIL_API_URL);
+            const data = await response.json();
+            const movie = data.data.movie;
+            document.getElementById('movie-detail').innerHTML = `
+                <img src="${movie.large_cover_image}" alt="${movie.title}">
+                <h2>${movie.title}</h2>
+                <p>${movie.description_full || '설명이 없습니다.'}</p>
+                <p>평점: ${movie.rating}</p>
+                <p>장르: ${movie.genres.join(', ')}</p>
+            `;
+        }
+
+        fetchMovieDetail();
+    </script>
+</body>
+</html>

@@ -148,3 +148,31 @@ body {
 .game-card:hover {
     transform: translateY(-10px);
 }
+
+
+/* Movies Section */
+#movies {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.movie-link {
+    margin-top: 20px;
+}
+
+.movie-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #6c5ce7;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.movie-button:hover {
+    background: #5a4dbd;
+}
