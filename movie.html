@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>영화박사 - 메인 페이지</title>
+    <title>영화박사 - 영화 목록</title>
     <link rel="stylesheet" href="./styles/movie.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header Section -->
@@ -16,28 +15,49 @@
         </nav>
     </header>
 
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <input type="text" id="search-input" placeholder="영화 제목을 입력하세요" />
+            <button id="search-button" class="button">검색</button>
+        </div>
+    </section>
+
     <!-- Movie List -->
-    <main>
-        <section>
-            <h2>최신 영화 목록</h2>
-            <div id="movie-list" class="movie-container"></div>
-        </section>
-    </main>
+    <section>
+        <div id="movie-list" class="movie-container"></div>
+    </section>
 
+    <!-- JavaScript -->
     <script>
-        const API_URL = "https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year";
+        const API_URL = 'https://yts.mx/api/v2/list_movies.json';
 
-        async function fetchMovies() {
-            const response = await fetch(API_URL);
-            const data = await response.json();
-            const movies = data.data.movies;
+        async function fetchMovies(query = "") {
+            try {
+                const url = query 
+                    ? `${API_URL}?query_term=${query}&minimum_rating=8` 
+                    : `${API_URL}?minimum_rating=8&sort_by=year`;
+                const response = await fetch(url);
+                const data = await response.json();
+                displayMovies(data.data.movies);
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+                document.getElementById('movie-list').innerHTML = "<p>영화를 불러오는 중 오류가 발생했습니다.</p>";
+            }
+        }
+
+        function displayMovies(movies) {
             const movieList = document.getElementById('movie-list');
-
+            movieList.innerHTML = ""; // 기존 내용 초기화
+            if (!movies || movies.length === 0) {
+                movieList.innerHTML = "<p>검색 결과가 없습니다.</p>";
+                return;
+            }
             movies.forEach(movie => {
                 const movieCard = document.createElement('div');
                 movieCard.className = 'movie-card';
                 movieCard.innerHTML = `
-                    <img src="${movie.medium_cover_image}" alt="${movie.title}" onerror="this.src='./assets/noMoive.png'">
+                    <img src="${movie.medium_cover_image}" alt="${movie.title}">
                     <h3>${movie.title}</h3>
                     <a href="movie_detail.html?id=${movie.id}">자세히 보기</a>
                 `;
@@ -45,6 +65,13 @@
             });
         }
 
+        // 검색 버튼 이벤트
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchQuery = document.getElementById('search-input').value.trim();
+            fetchMovies(searchQuery);
+        });
+
+        // 초기 로딩 시 영화 목록 표시
         fetchMovies();
     </script>
 </body>
