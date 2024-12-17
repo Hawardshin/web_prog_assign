@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화박사 - 메인 페이지</title>
+    <link rel="stylesheet" href="./styles/movie.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <h1>🎬 영화박사</h1>
+        <nav>
+            <a href="index.html">쩝쩝박사로 이동</a>
+        </nav>
+    </header>
+
+    <!-- Movie List -->
+    <main>
+        <section>
+            <h2>최신 영화 목록</h2>
+            <div id="movie-list" class="movie-container"></div>
+        </section>
+    </main>
+
+    <script>
+        const API_URL = "https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year";
+
+        async function fetchMovies() {
+            const response = await fetch(API_URL);
+            const data = await response.json();
+            const movies = data.data.movies;
+            const movieList = document.getElementById('movie-list');
+
+            movies.forEach(movie => {
+                const movieCard = document.createElement('div');
+                movieCard.className = 'movie-card';
+                movieCard.innerHTML = `
+                    <img src="${movie.medium_cover_image}" alt="${movie.title}" onerror="this.src='./assets/noMoive.png'">
+                    <h3>${movie.title}</h3>
+                    <a href="movie_detail.html?id=${movie.id}">자세히 보기</a>
+                `;
+                movieList.appendChild(movieCard);
+            });
+        }
+
+        fetchMovies();
+    </script>
+</body>
+</html>
