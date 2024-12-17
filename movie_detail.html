@@ -18,9 +18,18 @@
 
     <!-- Movie Detail -->
     <main>
-        <div id="movie-detail" class="movie-detail"></div>
+        <div id="movie-detail" class="movie-detail card-style">
+            <img src="" alt="영화 이미지" id="movie-image" />
+            <div class="movie-detail-content">
+                <h2 id="movie-title">영화 제목</h2>
+                <p id="movie-summary">설명이 없습니다.</p>
+                <p id="movie-rating">평점: </p>
+                <p id="movie-genres">장르: </p>
+            </div>
+        </div>
     </main>
 
+    <!-- Script -->
     <script>
         const params = new URLSearchParams(window.location.search);
         const movieId = params.get('id');
@@ -30,13 +39,12 @@
             const response = await fetch(DETAIL_API_URL);
             const data = await response.json();
             const movie = data.data.movie;
-            document.getElementById('movie-detail').innerHTML = `
-                <img src="${movie.large_cover_image}" alt="${movie.title}">
-                <h2>${movie.title}</h2>
-                <p>${movie.description_full || '설명이 없습니다.'}</p>
-                <p>평점: ${movie.rating}</p>
-                <p>장르: ${movie.genres.join(', ')}</p>
-            `;
+
+            document.getElementById('movie-image').src = movie.large_cover_image;
+            document.getElementById('movie-title').innerText = `${movie.title}`;
+            document.getElementById('movie-summary').innerText = movie.description_full || "설명이 없습니다.";
+            document.getElementById('movie-rating').innerText = `평점: ${movie.rating}`;
+            document.getElementById('movie-genres').innerText = `장르: ${movie.genres.join(', ')}`;
         }
 
         fetchMovieDetail();
